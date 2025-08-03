@@ -100,6 +100,7 @@ router.get("/google/callback", passport.authenticate("google", { failureRedirect
   }
   try {
     const token = generateToken(req.user._id)
+    console.log("Generated token for user:", req.user._id)
     res.redirect(`${process.env.CLIENT_URL}/auth/success?token=${token}`)
   } catch (error) {
     console.error("Google callback error:", error)
